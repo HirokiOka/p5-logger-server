@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 const dbClient = new Client({
   user: process.env.USER,
   host: process.env.HOST,
-  database: porocess.env.DB,
+  database: process.env.DB,
   password: process.env.PWD,
   port: process.env.DBPORT 
 });
