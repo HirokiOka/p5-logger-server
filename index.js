@@ -10,7 +10,10 @@ const dbClient = new Client({
   host: process.env.HOST,
   database: process.env.DB,
   password: process.env.PWD,
-  port: process.env.DBPORT 
+  port: process.env.DBPORT,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
