@@ -19,7 +19,9 @@ app.use(cors({
   origin: ['https://editor.p5js.org']
 }));
 
-dbClient.connect().then(() => console.log('DB connected'));
+dbClient.connect()
+  .then(() => console.log('DB connected'))
+  .catch((e) => console.error(e));
 
 app.post('/data', async (req, res) => {
   const id = parseInt(req.body.userId);
