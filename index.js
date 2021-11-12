@@ -9,7 +9,7 @@ const dbClient = new Client({
   user: process.env.USER,
   host: process.env.HOST,
   database: process.env.DB,
-  password: process.env.PWD,
+  password: process.env.PASSWORD,
   port: process.env.DBPORT,
   ssl: {
     rejectUnauthorized: false
