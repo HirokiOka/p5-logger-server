@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf8'>
+    <title>p5 logger</title>
+    <link rel="stylesheet" href="/codemirror/lib/codemirror.css">
+    <script src="/codemirror/lib/codemirror.js"></script>
+    <script src="/codemirror/mode/javascript/javascript.js"></script>
+  </head>
+  <body>
+    <h2>p5 logger</h2>
+    <button id="run">RUN</button>
+    <div style="display: flex;">
+      <div style="border: medium solid gray;">
+        <textarea id="editor" rows="30" cols="50">
+        </textarea>
+      </div>
+      <main style="padding: 10px; border: medium solid gray;">
+        <div id="canvas"></div>
+      </main>
+    </div>
+    <div id="console">
+      <p style="margin: 0px;">console:</p>
+      <p id="console-message" style="border: medium solid black; height: 200px;"></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
