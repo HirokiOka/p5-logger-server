@@ -1,4 +1,0 @@
-.node_modules/*
-./p5log.json
-.env
-./public/codemirror/*
