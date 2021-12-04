@@ -4,6 +4,7 @@ let editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   indentUnit: 2,
   fontSize: 16,
 });
+
 const initCode = `function setup() {
   createCanvas(400, 400);
 }
@@ -11,6 +12,7 @@ const initCode = `function setup() {
 function draw() {
   background(200);
 }`;
+
 editor.setSize(600, 400);
 editor.setValue(initCode);
 
@@ -29,6 +31,7 @@ function setup() {
 }
 
 document.getElementById("run").addEventListener('click', () => {
+  webConsole.innerText = '';
   const code = editor.getValue();
   if (code.match(/createCanvas/g)) {
     const createCanvas = (...args) => {
