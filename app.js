@@ -26,7 +26,7 @@ app.get('', (req, res) => {
   res.render('index');
 });
 
-app.post('/data', async (req, res) => {
+app.post('/data', (req, res) => {
   const id = parseInt(req.body.userId);
   const timestamp = req.body.timestamp;
   const code = req.body.code;
