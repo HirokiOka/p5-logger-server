@@ -83,7 +83,9 @@ document.getElementById("run").addEventListener('click', () => {
   postCodeContent(code, currentTimestamp);
   if (document.getElementById("toggle").checked) {
     const fileName = currentTimestamp + '.png';
-    window.save(canvas, fileName);
+    setTimeout(() => {
+      window.save(canvas, fileName)
+    }, 1000);
   }
 });
 
