@@ -43,9 +43,8 @@ function setup() {
 
 
 //Post codeContent to Server via fetch function
-function postCodeContent(codeContent) {
+function postCodeContent(codeContent, timestamp) {
   const serverURL = 'https://p5-logger.herokuapp.com/data';
-  const currentTimestamp = new Date().toLocaleString();
   //const dummyId = Math.floor(Math.random() * 100);
   const id = sessionStorage.id;
   const postData = {
@@ -75,10 +74,17 @@ document.getElementById("run").addEventListener('click', () => {
   if (!(isLooping())) window.loop(); 
   webConsole.innerText = '';
   const code = editor.getValue();
+  const currentTimestamp = new Date().toLocaleString();
+
   window.eval(code);
   if (code.match(/setup/g)) window.setup();
   canvas.parent('canvas');
-  postCodeContent(code);
+
+  postCodeContent(code, currentTimestamp);
+  if (document.getElementById("toggle").checked) {
+    const fileName = currentTimestamp + '.png';
+    window.save(canvas, fileName);
+  }
 });
 
 document.getElementById("stop").addEventListener('click', () => {
