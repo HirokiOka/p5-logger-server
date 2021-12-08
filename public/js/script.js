@@ -63,7 +63,6 @@ function postCodeContent(codeContent) {
     method: 'POST',
   };
   try {
-    raise(e);
     fetch(serverURL, options).then(res => res.json());
   } catch(e) {
     const index = localStorage.length + 1;
