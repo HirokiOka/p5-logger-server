@@ -11,6 +11,9 @@ const dbClient = new Client({
   database: process.env.DB,
   password: process.env.PWD,
   port: process.env.DBPORT,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 app.set('view engine', 'ejs');
