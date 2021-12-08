@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-/*
 const dbClient = new Client({
   user: process.env.USER,
   host: process.env.HOST,
@@ -42,7 +41,6 @@ app.post('/data', async (req, res) => {
   });
   res.json({ "message": "success" });
 });
-*/
 
 app.get('', (req, res) => {
   res.render('./index.html');
