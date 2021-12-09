@@ -3,10 +3,9 @@
   <head>
     <meta charset='utf8'>
     <title>p5 logger</title>
-    <link rel="stylesheet" href="/codemirror/lib/codemirror.css">
     <link rel="stylesheet" href="/styles/style.css">
-    <script src="/codemirror/lib/codemirror.js"></script>
-    <script src="/codemirror/mode/javascript/javascript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.js"></script>
     <style>
     .toggle-checkbox:checked {
       @apply: right-0 border-green-400;
@@ -31,11 +30,9 @@
     <label for="toggle" class="text-gray-700">auto DL</label>
 
     <div class='flex m-2'>
-      <div class='border-solid border-4'>
-        <textarea id="editor"></textarea>
-      </div>
-      <main class='border-solid border-4'>
-        <div id="canvas"></div>
+        <div id="editor" class='border-solid border-4 h-96 w-3/5'></div>
+      <main>
+        <div id="canvas" class="border-solid border-4"></div>
       </main>
     </div>
 

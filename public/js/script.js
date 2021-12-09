@@ -1,20 +1,20 @@
-//Init CodeMirror
-let editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
-  mode: "javascript",
-  lineNumbers: true,
-  indentUnit: 2,
-  fontSize: 16,
-});
 const initCode = `function setup() {
   createCanvas(400, 400);
-  background(200);
 }
 
 function draw() {
-  //ellipse(random(width), random(height), 200);
+  background(200);
 }`;
-editor.setSize(600, 400);
+let editor  =ace.edit("editor");
+editor.setOptions({
+  fontSize: 16,
+  tabSize: 2,
+  mode: "ace/mode/javascript",
+  enableLiveAutocompletion: true
+});
+
 editor.setValue(initCode);
+editor.$blockScrolling = Infinity;
 
 
 //Init userId
