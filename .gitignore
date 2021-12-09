@@ -1,5 +1,5 @@
-./node_modules/*
-./p5log.json
+/node_modules/
+/p5log.json
 .env
-./public/codemirror/*
-./p5log_dump1.csv
+/public/codemirror/*
+/p5log_dump1.csv
