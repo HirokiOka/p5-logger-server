@@ -38,6 +38,9 @@ let canvas;
 function setup() {
   canvas = createCanvas(400, 400);
   canvas.parent('canvas');
+}
+
+function draw() {
   background(200);
 }
 
@@ -69,15 +72,26 @@ function postCodeContent(codeContent, timestamp) {
   }
 }
 
+function resetCanvasVariables() {
+  window.stroke(0);
+  window.fill(255);
+}
+
+
 //Events
 document.getElementById("run").addEventListener('click', () => {
+  resetCanvasVariables();
   if (!(isLooping())) window.loop(); 
   webConsole.innerText = '';
   const code = editor.getValue();
   const currentTimestamp = new Date().toLocaleString();
-
-  window.eval(code);
-  if (code.match(/setup/g)) window.setup();
+  try {
+    window.eval(code);
+    if (code.match(/setup/g)) window.setup();
+  } catch (e) {
+    console.log(e);
+    window.noLoop();
+  }
   canvas.parent('canvas');
 
   postCodeContent(code, currentTimestamp);
