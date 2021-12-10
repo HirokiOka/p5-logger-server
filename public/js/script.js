@@ -115,3 +115,6 @@ document.getElementById("canvas").addEventListener('click', () =>{
   window.save(canvas, fileName);
 });
 
+window.addEventListener("beforeunload", (e) => {
+    e.returnValue = "ページを離れます．よろしいですか？"
+});
