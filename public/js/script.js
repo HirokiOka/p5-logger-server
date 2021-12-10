@@ -39,7 +39,6 @@ function setup() {
   canvas = createCanvas(400, 400);
   canvas.parent('canvas');
 }
-
 function draw() {
   background(200);
 }
@@ -64,12 +63,11 @@ function postCodeContent(codeContent, timestamp) {
     body: JSON.stringify(postData),
     method: 'POST',
   };
-  try {
-    fetch(serverURL, options).then(res => res.json());
-  } catch(e) {
-    const index = localStorage.length + 1;
-    localStorage.setItem(index, JSON.stringify(postData));
-  }
+  fetch(serverURL, options).then(res => res.json())
+    .catch(err => {
+      const index = localStorage.length + 1;
+      localStorage.setItem(index, JSON.stringify(postData));
+    });
 }
 
 function resetCanvasVariables() {
