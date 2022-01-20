@@ -29,7 +29,7 @@ const webConsole = document.getElementById('console-message');
 const log = console.log;
 console.log = (...args) => {
   log(...args);
-  webConsole.innerText = args;
+  webConsole.innerText += args + '\n';
 };
 
 
