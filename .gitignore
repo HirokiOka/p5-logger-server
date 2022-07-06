@@ -2,4 +2,5 @@
 /p5log.json
 .env
 /public/codemirror/*
+/public/styles/
 /p5log_dump1.csv
