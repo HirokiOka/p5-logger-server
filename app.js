@@ -1,5 +1,4 @@
 const express = require('express');
-const ejs = require('ejs');
 const { Client } = require('pg');
 const bodyParser = require('body-parser');
 
@@ -16,7 +15,6 @@ const dbClient = new Client({
   }
 });
 
-app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -26,7 +24,7 @@ dbClient.connect()
   .catch((e) => console.error(e));
 
 app.get('/', (_, res) => {
-  res.render('index');
+  res.sendFile('index.html');
 });
 
 app.post('/data', (req, res) => {
