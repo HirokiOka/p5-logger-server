@@ -25,7 +25,7 @@ dbClient.connect()
   .then(() => console.log('DB connected'))
   .catch((e) => console.error(e));
 
-app.get('', (req, res) => {
+app.get('/', (_, res) => {
   res.render('index');
 });
 

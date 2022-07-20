@@ -1,19 +1,19 @@
-const initCode = `function setup() {
+const initialCode = `function setup() {
   createCanvas(400, 400);
 }
 
 function draw() {
   background(200);
 }`;
-let editor  =ace.edit("editor");
-editor.setOptions({
+const editor = ace.edit("editor");
+const editorOptions = {
   fontSize: 16,
   tabSize: 2,
   mode: "ace/mode/javascript",
   enableLiveAutocompletion: true
-});
-
-editor.setValue(initCode);
+};
+editor.setOptions(editorOptions);
+editor.setValue(initialCode);
 editor.$blockScrolling = Infinity;
 
 
@@ -42,7 +42,6 @@ function setup() {
 function draw() {
   background(200);
 }
-
 
 //Post codeContent to Server via fetch function
 function postCodeContent(codeContent, timestamp) {
@@ -101,13 +100,14 @@ document.getElementById("run").addEventListener('click', () => {
   }
 });
 
+//Event Listeners
 document.getElementById("stop").addEventListener('click', () => {
   window.noLoop();
+  webConsole.innerText = '';
 });
 
 document.getElementById("dl-storage").addEventListener('click', () => {
   window.save(localStorage, 'localStorage.json', true);
-
 });
 
 document.getElementById("canvas").addEventListener('click', () =>{ 
