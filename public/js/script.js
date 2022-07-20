@@ -100,7 +100,6 @@ document.getElementById("run").addEventListener('click', () => {
   }
 });
 
-//Event Listeners
 document.getElementById("stop").addEventListener('click', () => {
   window.noLoop();
   webConsole.innerText = '';
