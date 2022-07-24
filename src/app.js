@@ -24,23 +24,22 @@ app.get('/', (_, res) => {
 });
 
 app.post('/data', (req, res) => {
-  const id = parseInt(req.body.userId);
-  const timestamp = req.body.timestamp;
-  const code = req.body.code;
-  console.log(lastSourceCode);
-  if (lastSourceCode !== '') {
-    const ted = calcTed(lastSourceCode, code);
-    console.log(`ted: ${ted}`);
-  }
+  const userId = parseInt(req.body.userId);
+  const executedAt = req.body.executedAt;
+  const sourceCode = req.body.code;
+  const sloc = sourceCode.split('\n').length;
+  console.log(`lastSourceCode: ${lastSourceCode}`);
+  let ted = 0;
+  if (lastSourceCode !== '') ted = calcTed(lastSourceCode, sourceCode);
   const query = {
-    text: 'INSERT INTO p5log (id, timestamp, code) VALUES($1, $2, $3)',
-    values: [id, timestamp, code],
+    text: 'INSERT INTO exeLog(userId, executedAt, sourceCode, sloc, ted) VALUES($1, $2, $3, $4, $5)',
+    values: [userId, executedAt, sourceCode, sloc, ted],
   };
-  lastSourceCode = code;
-
+  lastSourceCode = sourceCode;
+  console.log(query);
   dbClient.query(query, (err, res) => {
     if (err) console.log(err);
-    console.log(timestamp, res);
+    //console.log(executedAt, res);
   });
   res.json({ "message": "success" });
 });
@@ -48,3 +47,4 @@ app.post('/data', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is up on http://localhost:${PORT}`);
 });
+

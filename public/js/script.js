@@ -50,10 +50,9 @@ function postCodeContent(codeContent, timestamp) {
   const id = sessionStorage.id;
   const postData = {
     userId: id,
-    timestamp: timestamp,
+    executedAt: timestamp,
     code: codeContent
   };
-  //console.log(postData);
   const options = {
     headers: {
       'Accept': 'application/json',

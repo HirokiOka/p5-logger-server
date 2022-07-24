@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 export const setConfig = {
   production: {
     user: process.env.USER,
@@ -15,9 +18,6 @@ export const setConfig = {
     database: process.env.DEVDB,
     password: process.env.DEVPWD,
     port: process.env.DEVPORT,
-    ssl: {
-      rejectUnauthorized: false
-    }
   }
 }
 

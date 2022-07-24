@@ -31,5 +31,8 @@
     "pg": "^8.7.1",
     "postcss-cli": "^9.0.2",
     "tailwindcss": "^2.2.19"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1"
   }
 }
