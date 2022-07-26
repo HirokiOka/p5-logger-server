@@ -43,15 +43,14 @@ function draw() {
 }
 
 //Post codeContent to Server via fetch function
-function postCodeContent(codeContent, timestamp) {
+async function postCodeContent(codeContent, timestamp) {
   //const serverURL = 'https://p5-logger.herokuapp.com/data';
   const serverURL = 'http://localhost:3000/data';
-  //const dummyId = Math.floor(Math.random() * 100);
   const id = sessionStorage.id;
   const postData = {
     userId: id,
     executedAt: timestamp,
-    code: codeContent
+    code: codeContent,
   };
   const options = {
     headers: {
@@ -65,6 +64,7 @@ function postCodeContent(codeContent, timestamp) {
     .catch(err => {
       const index = localStorage.length + 1;
       localStorage.setItem(index, JSON.stringify(postData));
+      console.log(err);
     });
 }
 
@@ -75,7 +75,7 @@ function resetCanvasVariables() {
 
 
 //Events
-document.getElementById("run").addEventListener('click', () => {
+document.getElementById("run").addEventListener('click', async () => {
   resetCanvasVariables();
   if (!(isLooping())) window.loop(); 
   webConsole.innerText = '';
@@ -89,14 +89,17 @@ document.getElementById("run").addEventListener('click', () => {
     window.noLoop();
   }
   canvas.parent('canvas');
+  //const imageBase64 = canvasElm.toDataURL('image/png').split(',')[1]; 
 
   postCodeContent(code, currentTimestamp);
+  /*
   if (document.getElementById("toggle").checked) {
     const fileName = currentTimestamp + '.png';
     setTimeout(() => {
       window.save(canvas, fileName)
     }, 1000);
   }
+  */
 });
 
 document.getElementById("stop").addEventListener('click', () => {
@@ -113,6 +116,8 @@ document.getElementById("canvas").addEventListener('click', () =>{
   window.save(canvas, fileName);
 });
 
+/*
 window.addEventListener("beforeunload", (e) => {
     e.returnValue = "ページを離れます．よろしいですか？"
 });
+*/

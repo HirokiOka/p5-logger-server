@@ -32,7 +32,7 @@ app.post('/data', (req, res) => {
   let ted = 0;
   if (lastSourceCode !== '') ted = calcTed(lastSourceCode, sourceCode);
   const query = {
-    text: 'INSERT INTO exeLog(userId, executedAt, sourceCode, sloc, ted) VALUES($1, $2, $3, $4, $5)',
+    text: 'INSERT INTO srclog(userId, executedAt, sourceCode, sloc, ted) VALUES($1, $2, $3, $4, $5)',
     values: [userId, executedAt, sourceCode, sloc, ted],
   };
   lastSourceCode = sourceCode;
