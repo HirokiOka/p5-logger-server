@@ -21,16 +21,13 @@
   },
   "homepage": "https://github.com/HirokiOka/p5-logger-server#readme",
   "dependencies": {
-    "autoprefixer": "^10.4.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "edit-distance": "^1.0.5",
     "esprima": "^4.0.1",
     "express": "^4.17.1",
     "nodemon": "^2.0.15",
-    "pg": "^8.7.1",
-    "postcss-cli": "^9.0.2",
-    "tailwindcss": "^2.2.19"
+    "pg": "^8.7.1"
   },
   "devDependencies": {
     "dotenv": "^16.0.1"
