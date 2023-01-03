@@ -44,8 +44,8 @@ function draw() {
 
 //Post codeContent to Server via fetch function
 async function postCodeContent(codeContent, timestamp) {
-  //const serverURL = 'https://p5-logger.herokuapp.com/data';
-  const serverURL = 'http://localhost:3000/data';
+  const serverURL = 'https://p5-logger.onrender.com/data';
+  //const serverURL = 'http://localhost:3000/data';
   const id = sessionStorage.id;
   const postData = {
     userId: id,
