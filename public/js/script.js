@@ -18,9 +18,15 @@ editor.$blockScrolling = Infinity;
 
 
 //Init userId
+/*
 if (sessionStorage.id === undefined) {
   const userId = Math.floor(new Date().getTime() % 10**7);
   sessionStorage.setItem('id', userId);
+}
+*/
+if (sessionStorage.userName === undefined) {
+  const userName = 'AnonymousUser';
+  sessionStorage.setItem('userName', userName);
 }
 
 //show console content in page
@@ -46,9 +52,9 @@ function draw() {
 async function postCodeContent(codeContent, timestamp) {
   const serverURL = 'https://p5-logger.onrender.com/data';
   //const serverURL = 'http://localhost:3000/data';
-  const id = sessionStorage.id;
+  const userName = sessionStorage.userName;
   const postData = {
-    userId: id,
+    userName: userName,
     executedAt: timestamp,
     code: codeContent,
   };
@@ -97,9 +103,15 @@ document.getElementById("stop").addEventListener('click', () => {
   webConsole.innerText = '';
 });
 
-document.getElementById("canvas").addEventListener('click', () =>{ 
+document.getElementById("canvas").addEventListener('click', () => { 
   const fileName = new Date().toLocaleString().substr(10, 12) + '.png';
   window.save(canvas, fileName);
+});
+
+document.getElementById("user-name").addEventListener('click', () => {
+  const userName = window.prompt('User Name:'); 
+  document.getElementById("user-name").innerText = userName;
+  sessionStorage.setItem('userName', userName);
 });
 
 window.addEventListener("beforeunload", (e) => {

@@ -23,13 +23,13 @@ let lastSourceCode = '';
 
 app.get('/', (_, res) => res.sendFile('index.html'));
 app.post('/data', async (req, _) => {
-  const userId = parseInt(req.body.userId);
+  const userName = parseInt(req.body.userName);
   const executedAt = req.body.executedAt;
   const sourceCode = req.body.code;
   const sloc = sourceCode.split('\n').length;
   let ted = 0;
   if (lastSourceCode !== '') ted = calcTed(lastSourceCode, sourceCode);
-  const insertData =  { userId, executedAt, sourceCode, sloc, ted };
+  const insertData =  { userName, executedAt, sourceCode, sloc, ted };
   const response = await collection.insertOne(insertData);
   lastSourceCode = sourceCode;
 });
