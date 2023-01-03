@@ -23,7 +23,7 @@ let lastSourceCode = '';
 
 app.get('/', (_, res) => res.sendFile('index.html'));
 app.post('/data', async (req, _) => {
-  const userName = parseInt(req.body.userName);
+  const userName = req.body.userName;
   const executedAt = req.body.executedAt;
   const sourceCode = req.body.code;
   const sloc = sourceCode.split('\n').length;
