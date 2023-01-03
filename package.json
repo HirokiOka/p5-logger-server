@@ -26,6 +26,7 @@
     "edit-distance": "^1.0.5",
     "esprima": "^4.0.1",
     "express": "^4.17.1",
+    "mongodb": "^4.13.0",
     "nodemon": "^2.0.15",
     "pg": "^8.7.1"
   },

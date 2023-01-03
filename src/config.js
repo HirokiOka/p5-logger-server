@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
+/*
 export const setConfig = {
   production: {
     user: process.env.USER,
@@ -20,4 +21,19 @@ export const setConfig = {
     port: process.env.DEVPORT,
   }
 }
+*/
 
+export const mongoConfig = {
+  production: {
+    driver: process.env.DBDRIVER,
+    user: process.env.USER,
+    host: process.env.HOST,
+    password: process.env.PASSWORD,
+  },
+  development: {
+    driver: process.env.DBDRIVER,
+    user: process.env.DBUSER,
+    host: process.env.DBHOST,
+    password: process.env.DBPWD,
+  }
+};
