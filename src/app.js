@@ -37,7 +37,7 @@ app.post('/data', async (req, res) => {
   let ted = 0;
   if (lastSourceCode !== '') ted = calcTed(lastSourceCode, sourceCode);
   const insertData =  { userId, executedAt, sourceCode, sloc, ted };
-  const res = await collection.insertOne(insertData);
+  const response = await collection.insertOne(insertData);
   lastSourceCode = sourceCode;
 });
 
