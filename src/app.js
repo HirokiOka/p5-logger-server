@@ -7,29 +7,22 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-const dbDriver = process.env.DBDRIVER;
-const dbUser = process.env.DBUSER;
-const dbPassword = process.env.DBPWD;
-const dbHost = process.env.DBHOST;
-
-const URI = `${dbDriver}://${dbUser}:${dbPassword}@${dbHost}/?retryWrites=true&w=majority`;
-const client = await MongoClient.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+const mongoOption = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverApi: ServerApiVersion.v1,
+};
+const client = await MongoClient.connect(process.env.DBURI, mongoOption);
 const collection = client.db("development").collection("codeparams");
-
-
-let lastSourceCode = '';
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+let lastSourceCode = '';
 
-app.get('/', (_, res) => {
-  res.sendFile('index.html');
-});
-
-app.post('/data', async (req, res) => {
+app.get('/', (_, res) => res.sendFile('index.html'));
+app.post('/data', async (req, _) => {
   const userId = parseInt(req.body.userId);
   const executedAt = req.body.executedAt;
   const sourceCode = req.body.code;
@@ -40,8 +33,4 @@ app.post('/data', async (req, res) => {
   const response = await collection.insertOne(insertData);
   lastSourceCode = sourceCode;
 });
-
-app.listen(PORT, () => {
-  console.log(`Server is up on http://localhost:${PORT}`);
-});
-
+app.listen(PORT, () => console.log(`Server is up on PORT: ${PORT}`));
