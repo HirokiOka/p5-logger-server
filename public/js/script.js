@@ -89,17 +89,7 @@ document.getElementById("run").addEventListener('click', async () => {
     window.noLoop();
   }
   canvas.parent('canvas');
-  //const imageBase64 = canvasElm.toDataURL('image/png').split(',')[1]; 
-
   postCodeContent(code, currentTimestamp);
-  /*
-  if (document.getElementById("toggle").checked) {
-    const fileName = currentTimestamp + '.png';
-    setTimeout(() => {
-      window.save(canvas, fileName)
-    }, 1000);
-  }
-  */
 });
 
 document.getElementById("stop").addEventListener('click', () => {
@@ -107,17 +97,11 @@ document.getElementById("stop").addEventListener('click', () => {
   webConsole.innerText = '';
 });
 
-document.getElementById("dl-storage").addEventListener('click', () => {
-  window.save(localStorage, 'localStorage.json', true);
-});
-
 document.getElementById("canvas").addEventListener('click', () =>{ 
   const fileName = new Date().toLocaleString().substr(10, 12) + '.png';
   window.save(canvas, fileName);
 });
 
-/*
 window.addEventListener("beforeunload", (e) => {
     e.returnValue = "ページを離れます．よろしいですか？"
 });
-*/
