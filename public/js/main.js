@@ -24,8 +24,8 @@ function resetCanvasVariables() {
 
 //Post codeContent to DB
 function postCodeContent(codeContent, timestamp) {
-  //const serverURL = 'https://p5-logger.herokuapp.com/data';
-  const serverURL = 'http://localhost:3000/data';
+  const serverURL = 'https://p5-logger.onrender.com/data';
+  //const serverURL = 'http://localhost:3000/data';
   //const dummyId = Math.floor(Math.random() * 100);
   const id = sessionStorage.id;
   const postData = {
